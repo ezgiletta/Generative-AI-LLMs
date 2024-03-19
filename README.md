@@ -1,9 +1,9 @@
-# Comprehensive Overview of Large Language Models (LLMs)
+# Comprehensive Overview of LLMs
 
 This document provides an in-depth look into various aspects of Large Language Models (LLMs).
 
 <details>
-<summary>LLMs</summary>
+<summary><b>LLMs</b></summary>
 
 - As the number of parameters within a model increases, so does its demand for memory. This expansion not only necessitates more storage but also enhances the model's capability to tackle increasingly complex tasks.
 
@@ -20,7 +20,7 @@ This document provides an in-depth look into various aspects of Large Language M
 </details>
 
 <details>
-<summary>Transformers</summary>
+<summary><b>Transformers</b></summary>
 
 - **Transformers over RNNs**: Transformers improve upon RNNs by efficiently processing all words in a sentence simultaneously, enabling better performance in natural language tasks.
 - **Self-Attention Mechanism**: Enables the model to understand the context and relevance of each word in relation to every other word in the input, regardless of their position, significantly enhancing language understanding and generation capabilities.
@@ -63,7 +63,7 @@ This document provides an in-depth look into various aspects of Large Language M
 </details>
 
 <details>
-<summary>Prompt Engineering</summary>
+<summary><b>Prompt Engineering</b></summary>
 
 ## Main Points
 
@@ -116,7 +116,7 @@ Test different models to find the right fit for your task, and adjust settings t
 </details>
 
 <details>
-<summary>Generative AI Project Lifecycle</summary>
+<summary><b>Generative AI Project Lifecycle</b></summary>
 
 - Consider choosing between using pre-existing models or pre-training custom models.
 - Guidance on model customization and fine-tuning for specific data or tasks.
@@ -158,7 +158,7 @@ Test different models to find the right fit for your task, and adjust settings t
 </details>
 
 <details>
-<summary>Computational Challenges</summary>
+<summary><b>Computational Challenges</b></summary>
 
 Training Large Language Models (LLMs) is highly memory-intensive. Efficient memory management is crucial due to the massive number of parameters involved. This document summarizes the key aspects of memory requirements and strategies for optimizing memory usage during the training of LLMs.
 
@@ -190,7 +190,7 @@ Training Large Language Models (LLMs) is highly memory-intensive. Efficient memo
 </details>
 
 <details>
-<summary>Scaling Laws</summary>
+<summary><b>Scaling Laws</b></summary>
 # Exploring Model Size, Training Configuration, and Performance
 
 Understanding the relationship between model size, training configuration, and performance is essential for optimizing the training of large language models (LLMs). This section outlines key research findings and concepts relevant to the development and optimization of LLMs.
