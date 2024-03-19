@@ -111,12 +111,11 @@ Test different models to find the right fit for your task, and adjust settings t
 
 </details>
 
+<details>
 <summary>Generative AI Project Lifecycle</summary>
 
 - Consider choosing between using pre-existing models or pre-training custom models.
 - Guidance on model customization and fine-tuning for specific data or tasks.
-
-
 
 ### 1. Define the Scope
 - **Crucial Step**: Narrowly and accurately define the project scope.
