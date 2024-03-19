@@ -1,3 +1,7 @@
+# Comprehensive Overview of Large Language Models (LLMs)
+
+This document provides an in-depth look into various aspects of Large Language Models (LLMs).
+
 <details>
 <summary>LLMs</summary>
 
@@ -18,14 +22,14 @@
 <details>
 <summary>Transformers</summary>
 
-- Transformers over RNNs: Transformers improve upon RNNs by efficiently processing all words in a sentence simultaneously, enabling better performance in natural language tasks.
-- Self-Attention Mechanism: Enables the model to understand the context and relevance of each word in relation to every other word in the input, regardless of their position, significantly enhancing language understanding and generation capabilities.
-- Encoder-Decoder Architecture: The transformer model is split into two parts: the encoder, which processes the input text, and the decoder, which generates the output text. These components share a number of similarities and work in conjunction.
-- Tokenization: Text must be converted into tokens, representing either whole words or parts of words, which are then used by the model for processing. The choice of tokenizer affects the model's understanding and generation of text.  In general, word are used as tokens.
-- Embedding Layer: Maps each token to a high-dimensional vector space, allowing the model to capture the meaning and context of each token. Positional encodings are added to maintain word order. In original transformer paper, the vector size is 512. The vector weights of the embeddings are updated through backpropagation.
-- Multi-Headed Self-Attention: A key feature where multiple sets of attention weights (heads) learn different aspects of the language independently. This allows the model to focus on various relationships within the text simultaneously. The weights of the self-attention mechanism—including those for each head are randomly initialized. 
-- Feed-Forward Network: Processes the output from the self-attention mechanism, resulting in logits that represent the probability scores for each possible word in the dictionary(tokens). 
-- Softmax Layer: Normalizes the logits into a probability distribution over all words in the vocabulary, with the highest probability indicating the most likely next word. 
+- **Transformers over RNNs**: Transformers improve upon RNNs by efficiently processing all words in a sentence simultaneously, enabling better performance in natural language tasks.
+- **Self-Attention Mechanism**: Enables the model to understand the context and relevance of each word in relation to every other word in the input, regardless of their position, significantly enhancing language understanding and generation capabilities.
+- **Encoder-Decoder Architecture**: The transformer model is split into two parts: the encoder, which processes the input text, and the decoder, which generates the output text. These components share a number of similarities and work in conjunction.
+- **Tokenization**: Text must be converted into tokens, representing either whole words or parts of words, which are then used by the model for processing. The choice of tokenizer affects the model's understanding and generation of text.  In general, word are used as tokens.
+- **Embedding Layer**: Maps each token to a high-dimensional vector space, allowing the model to capture the meaning and context of each token. Positional encodings are added to maintain word order. In original transformer paper, the vector size is 512. The vector weights of the embeddings are updated through backpropagation.
+- **Multi-Headed Self-Attention**: A key feature where multiple sets of attention weights (heads) learn different aspects of the language independently. This allows the model to focus on various relationships within the text simultaneously. The weights of the self-attention mechanism—including those for each head are randomly initialized. 
+- **Feed-Forward Network**: Processes the output from the self-attention mechanism, resulting in logits that represent the probability scores for each possible word in the dictionary(tokens). 
+- **Softmax Layer**: Normalizes the logits into a probability distribution over all words in the vocabulary, with the highest probability indicating the most likely next word. 
 
 ### Different Types of Transformer Models
 
