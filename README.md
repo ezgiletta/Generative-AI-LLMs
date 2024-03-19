@@ -228,3 +228,99 @@ Understanding the relationship between model size, training configuration, and p
 - Smaller models trained on larger datasets can achieve comparable or better performance than larger models trained less optimally.
 
 </details>
+
+<details>
+<summary><b>Instruction Fine Tuning</b></summary>
+
+## Introduction
+
+Fine-tuning is a pivotal process in optimizing pre-trained Large Language Models for specific tasks. This document explores various fine-tuning strategies, including single-task fine-tuning, multitask fine-tuning, parameter-efficient fine-tuning (PEFT), and the use of models fine-tuned with these strategies, such as the FLAN family of models.
+
+## Fine-Tuning vs. Pre-Training
+
+- **Pre-Training**: Training LLMs using vast amounts of unstructured textual data for a general understanding.
+- **Fine-Tuning**: A supervised learning process using labeled examples (prompt-completion pairs) to refine the model's responses to specific tasks.
+
+## Single-Task Fine-Tuning and Catastrophic Forgetting
+
+Single-task fine-tuning enhances a model's performance on a specific area but may lead to catastrophic forgetting, where the model loses its ability to perform previously learned tasks.
+
+### Strategies to Mitigate Catastrophic Forgetting
+
+- Assess the impact on your use case.
+- Consider multitask fine-tuning to maintain generalization capabilities.
+- Use parameter-efficient fine-tuning (PEFT) techniques to preserve the original model weights.
+
+## Multitask Fine-Tuning
+
+This approach trains the model on datasets covering multiple tasks, enhancing its performance across various tasks and avoiding catastrophic forgetting.
+
+- Requires a comprehensive dataset with examples from multiple tasks.
+- Results in an instruction-tuned model capable of handling a variety of tasks simultaneously.
+
+## Parameter-Efficient Fine-Tuning (PEFT)
+
+PEFT involves modifying a small subset of the model's parameters, thus maintaining most of the pre-trained model's general capabilities while specializing in certain tasks.
+
+## The FLAN Family of Models
+
+FLAN (Fine-tuned LAnguage Net) models are examples of LLMs that have undergone multitask instruction fine-tuning.
+
+- **FLAN-T5**: Fine-tuned on hundreds of datasets across numerous task categories.
+- Utilizes datasets like SAMSum for specialized tasks such as summarization.
+
+</details>
+
+</details>
+
+<details>
+<summary><b># Evaluating LLMs</b></summary>
+
+## Understanding LLM Performance
+
+Evaluating LLMs involves more than just examining accuracy on training and validation datasets. Due to their non-deterministic outputs, specialized metrics are employed to measure performance nuances.
+
+## Key Metrics for LLM Evaluation
+
+### ROUGE (Recall-Oriented Understudy for Gisting Evaluation)
+
+- Used primarily for evaluating automatic summarization and text generation.
+- Measures the overlap between the generated text and reference text.
+- Variants include ROUGE-1 (unigrams), ROUGE-2 (bigrams), and ROUGE-L (longest common subsequence).
+
+### BLEU (Bilingual Evaluation Understudy)
+
+- Aimed at machine translation quality assessment.
+- Calculates precision of n-grams in the generated text compared to a set of reference texts.
+- Accounts for the accuracy of generated translations on a scale closer to human judgement.
+
+## Benchmarks for Holistic Evaluation
+
+### GLUE (General Language Understanding Evaluation)
+
+- A collection of tasks designed to foster the development of models capable of generalizing across a variety of linguistic tasks.
+- Includes sentiment analysis, question answering, and more.
+
+### SuperGLUE
+
+- An advanced version of GLUE with more challenging tasks.
+- Tests models on complex reasoning, deeper comprehension, and more.
+
+### MMLU (Massive Multitask Language Understanding)
+
+- Targets models' world knowledge and problem-solving capabilities.
+- Covers a broad range of topics from mathematics to law.
+
+### BIG-bench
+
+- A diverse set of tasks designed to test models' abilities in linguistics, math, reasoning, and more.
+- Offers three sizes to accommodate different computational resource capacities.
+
+### HELM (Holistic Evaluation of Language Models)
+
+- Focuses on transparency and task-specific performance.
+- Assesses models on a variety of metrics including fairness, bias, and toxicity.
+- Aims to continuously evolve with the language modeling field.
+</details>
+
+
