@@ -274,7 +274,7 @@ FLAN (Fine-tuned LAnguage Net) models are examples of LLMs that have undergone m
 </details>
 
 <details>
-<summary><b># Evaluating LLMs</b></summary>
+<summary><b>Evaluating LLMs</b></summary>
 
 ## Understanding LLM Performance
 
@@ -323,4 +323,89 @@ Evaluating LLMs involves more than just examining accuracy on training and valid
 - Aims to continuously evolve with the language modeling field.
 </details>
 
+
+<details>
+<summary><b>Parameter-Efficient Fine-Tuning (PEFT) for LLMs</b></summary>
+
+## Overview
+Training Large Language Models (LLMs) is a computationally intensive process, requiring significant memory resources not just for storing the model weights but also for optimizer states, gradients, forward activations, and temporary memory throughout the training process. PEFT methods offer a more memory-efficient way of fine-tuning LLMs by updating a small subset of parameters, thus making training more accessible on consumer hardware.
+
+## Key Points
+
+- **Memory Requirements**: Full fine-tuning of LLMs demands substantial memory for various components, often exceeding the capacity of consumer hardware. PEFT significantly reduces the memory footprint by focusing on a small subset of model parameters.
+- **Parameter Efficiency**: Most PEFT techniques keep the bulk of the LLM weights frozen, updating only 15-20% of the weights or adding a minimal number of new parameters for fine-tuning.
+- **Model Adaptability**: PEFT enables the original model to be adapted for multiple tasks with minimal modifications, reducing storage requirements and mitigating catastrophic forgetting problems associated with full fine-tuning.
+- **Footprint**: The smaller number of parameters trained with PEFT results in a much smaller overall footprint, sometimes as small as megabytes depending on the task.
+
+## Methods of PEFT
+
+PEFT can be categorized into three main classes:
+
+1. **Selective Methods**: These methods involve fine-tuning only a subset of the original LLM parameters. Options include targeting specific components, layers, or parameter types. However, these methods may involve trade-offs between parameter efficiency and computational efficiency.
+
+2. **Reparameterization Methods**: This approach works with the original LLM parameters but reduces the number of parameters to train through new, low-rank transformations of the original network weights. An example of this method is LoRA (Low-Rank Adaptation).
+
+3. **Additive Methods**: Additive methods involve keeping all the original LLM weights frozen and introducing new trainable components. Two main approaches under this category are:
+   - **Adapter Methods**: New trainable layers are added to the architecture of the model, typically within the encoder or decoder components.
+   - **Soft Prompt Methods**: The model architecture remains fixed and frozen, with fine-tuning achieved by manipulating the input. This can include adding trainable parameters to the prompt embeddings or retraining the embedding weights.
+
+</details>
+
+<details>
+<summary><b>Low-rank Adaptation (LoRA) for Fine-Tuning Large Language Models</b></summary>
+
+## Introduction
+
+Low-rank Adaptation (LoRA) is a parameter-efficient fine-tuning technique within the reparameterization category. It aims to reduce the number of trainable parameters during fine-tuning by introducing a pair of rank decomposition matrices alongside the original model weights. This technique allows for significant memory and computational efficiency improvements, making fine-tuning feasible on less powerful hardware.
+
+## How LoRA Works
+
+### Transformer Architecture
+
+- The process starts with an input prompt turned into tokens, which are then converted to embedding vectors.
+- These vectors pass through the encoder and/or decoder components of the transformer, involving self-attention and feedforward neural networks.
+
+### Fine-Tuning with LoRA
+
+- Unlike full fine-tuning, which updates every parameter, LoRA freezes the original model parameters.
+- It injects a pair of low-rank matrices to modify the weights, with dimensions ensuring their product matches the original weights' dimensions.
+- For inference, these matrices are multiplied and added to the original weights, updating the model with minimal impact on inference latency.
+
+### Practical Example
+
+- Considering a transformer with weights dimensions of 512 by 64, full fine-tuning would update all 32,768 parameters.
+- With LoRA, and choosing a rank of 8, you only train two matrices with dimensions of 8 by 64 and 512 by 8, resulting in just 4,608 parameters – an 86% reduction.
+
+## Choosing the Rank for LoRA Matrices
+
+- The rank choice is crucial, balancing between reducing parameters and maintaining model performance.
+- Research indicates a performance plateau for ranks greater than 16, suggesting a rank range of 4-32 offers a good trade-off.
+
+</details>
+
+<details>
+<summary><b>Prompt Tuning: A Parameter-Efficient Fine-Tuning Method</b></summary>
+
+## Overview
+
+Prompt tuning is a parameter-efficient fine-tuning (PEFT) method that significantly differs from traditional fine-tuning approaches by adding trainable tokens to the model's prompt instead of adjusting the model's weights. This approach allows for efficient model adaptation to new tasks without the computational burden of training millions to billions of parameters.
+
+## Prompt Tuning vs. Prompt Engineering
+
+- **Prompt Engineering**: Involves manually crafting the language of your prompt to improve the model's output. This can be through simple word changes or by including examples for few-shot inference. However, it can be labor-intensive and limited by the model's context window size.
+- **Prompt Tuning**: Adds additional trainable tokens (soft prompts) to your prompt, which are optimized through supervised learning to improve task performance. This method is computationally efficient, requiring the training of only a few parameters compared to the full model.
+
+## How Prompt Tuning Works
+
+1. **Soft Prompts**: Trainable tokens called soft prompts are prepended to the embedding vectors representing your input text. These vectors can be adjusted to optimize model performance for a specific task.
+2. **Virtual Tokens**: Unlike hard tokens, which correspond to fixed points in the embedding space, soft prompts are virtual tokens. They can take any value within the embedding space, allowing the model to learn task-specific representations.
+3. **Supervised Learning**: During prompt tuning, the LLM's weights remain frozen. Only the embedding vectors of the soft prompts are updated to optimize the model's responses to prompts.
+4. **Parameter Efficiency**: Prompt tuning trains far fewer parameters than traditional fine-tuning, offering a more resource-efficient way to adapt models to new tasks.
+
+## Performance and Applications
+
+- **Model Performance**: Initial research shows that prompt tuning performs comparably to full fine-tuning with large models (approximately 10 billion parameters), significantly outperforming prompt engineering alone.
+- **Interpretability**: Although the learned virtual tokens don't correspond to natural language words, analysis shows they form semantic clusters related to the task, indicating task-specific learning.
+
+</details>
 
